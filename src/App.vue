@@ -33,7 +33,6 @@ const navItems = {
       <li v-for="icon, page in navItems" :key="page" class=" flex-1">
         <a :href='`#${item}`' class="flex flex-col items-center p-2 text-xs capitalize" >
           <component :is="icon" class="h-6 w-6" /> {{ page }}
-           {{ item }}
           </a>
       </li>
     </ul>
