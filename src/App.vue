@@ -16,13 +16,15 @@ const timelineItems = generateTimelineItems()
 function goTo(page) {
   currentPage.value = page
 }
+
+const activities = [ 'Running','Coding','Reading']
 </script>
 
 <template>
   <TheHeader @navigate="goTo($event)" />
   <main class="flex flex-col flex-grow">
     <TheTimeline v-show="currentPage === PAGE_TIMELINE" :timeline-items="timelineItems" />
-    <TheActivities v-show="currentPage === PAGE_ACTIVITIES" />
+    <TheActivities v-show="currentPage === PAGE_ACTIVITIES" :activities="activities"/>
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
   <TheNav :current-page="currentPage" @navigate="goTo($event)" />
