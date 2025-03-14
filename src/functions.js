@@ -19,3 +19,7 @@ export function generateTimelineItems(){
   }
   return tinelineItems
 }
+
+export function generateActivitySelectOptions(activities){
+  return activities.map((label, value) => ({label, value}))
+}
