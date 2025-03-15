@@ -1,5 +1,5 @@
 <script setup>
-import { validateTimelineItems,  validateSelectOptions } from '@/validators'
+import { validateTimelineItems, validateSelectOptions, validateActivities, isTimeLineItemValid, isActivityValid } from '@/validators'
 import TimelineItem from '../components/TimelineItem.vue'
 
 defineProps({
@@ -8,10 +8,24 @@ defineProps({
     type: Array,
     validate: validateTimelineItems,
   },
+  activities: {
+    required: true,
+    type: Array,
+    validator: validateActivities,
+  },
   activitySelectOptions: {
     required: true,
     type: Array,
-    validator: validateSelectOptions
+    validator: validateSelectOptions,
+  },
+})
+
+const emit = defineEmits({
+  setTimelineItemActivity: ({timelineItem, activity}) => {
+    return [
+      isTimeLineItemValid(timelineItem),
+      isActivityValid(activity)
+    ].every(Boolean)
   },
 })
 </script>
@@ -23,6 +37,8 @@ defineProps({
       :key="timelineItem.hour"
       :timeline-item="timelineItem"
       :activity-select-options="activitySelectOptions"
+      :activities="activities"
+      @select-activity="emit('setTimelineItemActivity', {timelineItem, activity: $event})"
     />
   </ul>
 </template>

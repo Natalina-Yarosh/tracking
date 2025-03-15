@@ -1,5 +1,5 @@
-import { PAGE_TIMELINE, HOURS_IN_DAY, MIDNIGHT_HOUR, SECONDS_IN_HOUR } from './constants'
-import { isPageValid } from './validators'
+import { PAGE_TIMELINE, HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants'
+import { isPageValid, isNull } from './validators'
 export function normalizePageHash() {
   const page = window.location.hash.slice(1)
   if (isPageValid(page)) {
@@ -9,6 +9,11 @@ export function normalizePageHash() {
   window.location.hash = PAGE_TIMELINE
   return PAGE_TIMELINE
 }
+
+export function normalizeSelectValue(value) {
+  return isNull(value) || isNaN(value) ? value : +value
+}
+
 
 export function generateActivities() {
   return ['Coding', 'Training', 'Reading'].map((name) => ({
@@ -27,6 +32,7 @@ export function generateTimelineItems() {
   for (let hour = MIDNIGHT_HOUR; hour < HOURS_IN_DAY; hour++) {
     tinelineItems.push({
       hour,
+      activityId: null
     })
   }
   return tinelineItems
