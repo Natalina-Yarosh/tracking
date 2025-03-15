@@ -11,23 +11,11 @@ export function normalizePageHash() {
 }
 
 export function generateActivities() {
-  return [
-    {
-      id: id(),
-      name: 'Coding',
-      secondsToComplete: 0 * SECONDS_IN_HOUR,
-    },
-    {
-      id: id(),
-      name: 'Training',
-      secondsToComplete: 1 * SECONDS_IN_HOUR,
-    },
-    {
-      id: id(),
-      name: 'Readinf',
-      secondsToComplete: 2 * SECONDS_IN_HOUR,
-    },
-  ]
+  return ['Coding', 'Training', 'Reading'].map((name) => ({
+    id: id(),
+    name,
+    secondsToComplete: 0,
+  }))
 }
 
 export function id() {
