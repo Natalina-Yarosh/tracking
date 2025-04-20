@@ -5,7 +5,6 @@ import {
   validateActivities,
   isTimeLineItemValid,
   isActivityValid,
-  isNull,
 } from '@/validators'
 import TimelineItem from '../components/TimelineItem.vue'
 
@@ -28,8 +27,8 @@ defineProps({
 })
 
 const emit = defineEmits({
-  setTimelineItemActivity: ({ timelineItem, activity }) => {
-    return [isTimeLineItemValid(timelineItem), isNull(activity) || isActivityValid(activity)].every(Boolean)
+  setTimelineItemActivity: ( timelineItem, activity ) => {
+    return [isTimeLineItemValid(timelineItem),  isActivityValid(activity)].every(Boolean)
   },
 })
 </script>
@@ -42,7 +41,7 @@ const emit = defineEmits({
       :timeline-item="timelineItem"
       :activity-select-options="activitySelectOptions"
       :activities="activities"
-      @select-activity="emit('setTimelineItemActivity', { timelineItem, activity: $event })"
+      @select-activity="emit('setTimelineItemActivity',  timelineItem,  $event )"
     />
   </ul>
 </template>
