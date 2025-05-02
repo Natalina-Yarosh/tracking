@@ -18,12 +18,20 @@ import {
 const currentPage = ref(normalizePageHash())
 const activities = ref(generateActivities())
 const timelineItems = ref(generateTimelineItems(activities.value))
+const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
+const timeline = ref()
 
 function goTo(page) {
+  if(currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
+    timeline.value.scrollToHour()
+  }
+
+  if(page !== PAGE_TIMELINE  ) {
+    document.body.scrollIntoView()
+  }
   currentPage.value = page
 }
 
-const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 
 function deleteActivity(activity) {
   timelineItems.value.forEach((timelineItem) => {
@@ -59,6 +67,7 @@ function setActivitySecondsToComplete(activity, secondsToComplete){
       :activity-select-options="activitySelectOptions"
       :activities="activities"
       :current-page="currentPage"
+      ref="timeline"
       @set-timeline-item-activity="setTimelineItemActivity"
     />
     <TheActivities
