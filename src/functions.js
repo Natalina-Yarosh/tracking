@@ -4,6 +4,7 @@ import {
   MIDNIGHT_HOUR,
   MINUTES_IN_HOUR,
   SECONDS_IN_MINUTE,
+  MILLISECONDS_IN_SECONDS
 } from './constants'
 import { isPageValid, isNull } from './validators'
 export function normalizePageHash() {
@@ -38,6 +39,7 @@ export function generateTimelineItems() {
     tinelineItems.push({
       hour,
       activityId: null,
+      activitySeconds: 0
     })
   }
   return tinelineItems
@@ -60,4 +62,14 @@ function generatePeriodSelectOptionsLabel(periodInMinutes) {
     .padStart(2, 0)
   const minutes = (periodInMinutes % MINUTES_IN_HOUR).toString().padStart(2, 0)
   return `${hours}:${minutes}`
+}
+
+
+export function formatSeconds(seconds){
+  const date = new Date()
+  date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECONDS)
+
+  const utc = date.toUTCString()
+
+  return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
