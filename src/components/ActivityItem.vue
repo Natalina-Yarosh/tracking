@@ -1,9 +1,11 @@
 <script setup>
 import BaseButton from './BaseButton.vue'
 import BaseSelect from './BaseSelect.vue'
+import ActivitySecondsToComplete from './ActivitySecondsToComplete.vue'
 import { TrashIcon } from '@heroicons/vue/24/outline'
 import { PERIOD_SELECT_OPTIONS, BUTTON_TYPE_DANGER } from '../constants'
 import { isActivityValid, isUndefined, isNumber } from '@/validators'
+
 
 defineProps({
   activity: {
@@ -29,14 +31,15 @@ const emit = defineEmits({
       </BaseButton>
       <span class="truncate text-xl">{{ activity.name }}</span>
     </div>
-    <div>
+    <div class="flex gap-2">
       <BaseSelect
         :selected="activity.secondsToComplete || null"
-        class="font-mono"
+        class="font-mono flex-grow"
         placeholder="hh:mm"
         :options="PERIOD_SELECT_OPTIONS"
         @select="emit('setSecondsToComplete', $event || 0)"
       />
+     <ActivitySecondsToComplete  v-if="activity.secondsToComplete" :activity="activity" />
     </div>
   </li>
 </template>
