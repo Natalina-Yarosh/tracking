@@ -1,10 +1,9 @@
 import {
   PAGE_TIMELINE,
   HOURS_IN_DAY,
-  MIDNIGHT_HOUR,
   MINUTES_IN_HOUR,
   SECONDS_IN_MINUTE,
-  MILLISECONDS_IN_SECONDS
+  MILLISECONDS_IN_SECONDS, SECONDS_IN_HOUR
 } from './constants'
 import { isPageValid, isNull } from './validators'
 export function normalizePageHash() {
@@ -33,16 +32,13 @@ export function id() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
 
-export function generateTimelineItems() {
-  const tinelineItems = []
-  for (let hour = MIDNIGHT_HOUR; hour < HOURS_IN_DAY; hour++) {
-    tinelineItems.push({
-      hour,
-      activityId: null,
-      activitySeconds: 0
-    })
-  }
-  return tinelineItems
+export function generateTimelineItems(activities) {
+
+  return [...Array(HOURS_IN_DAY).keys()].map((hour) => ({
+    hour,
+    activityId: hour % 4 === 0 ? null : activities[hour % 2].id,
+    activitySeconds: hour % 4 === 0 ? 0 : (15 * SECONDS_IN_MINUTE * hour) % SECONDS_IN_HOUR,
+  }))
 }
 
 export function generateActivitySelectOptions(activities) {
