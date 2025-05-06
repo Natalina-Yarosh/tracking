@@ -22,38 +22,35 @@ const activitySelectOptions = computed(() => generateActivitySelectOptions(activ
 const timeline = ref()
 
 function goTo(page) {
-  if(currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
+  if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
     timeline.value.scrollToHour()
   }
 
-  if(page !== PAGE_TIMELINE  ) {
+  if (page !== PAGE_TIMELINE) {
     document.body.scrollIntoView()
   }
   currentPage.value = page
 }
-
 
 function deleteActivity(activity) {
   timelineItems.value.forEach((timelineItem) => {
     if (timelineItem.activityId === activity.id) {
       timelineItem.activityId = null
       timelineItem.activitySeconds = 0
-
     }
   })
   activities.value.splice(activities.value.indexOf(activity), 1)
 }
 
 function createActivity(activity) {
-
   activities.value.push(activity)
 }
 
-function setTimelineItemActivity(timelineItem, activity){
+function setTimelineItemActivity(timelineItem, activity) {
   timelineItem.activityId = activity.id
 }
 
-function setActivitySecondsToComplete(activity, secondsToComplete){
+function setActivitySecondsToComplete(activity, secondsToComplete) {
   activity.secondsToComplete = secondsToComplete
 }
 </script>
@@ -73,6 +70,7 @@ function setActivitySecondsToComplete(activity, secondsToComplete){
     <TheActivities
       v-show="currentPage === PAGE_ACTIVITIES"
       :activities="activities"
+      :timeline-items="timelineItems"
       @delete-activity="deleteActivity"
       @create-activity="createActivity"
       @set-activity-seconds-to-complete="setActivitySecondsToComplete"
