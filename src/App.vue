@@ -13,6 +13,7 @@ import {
   generateTimelineItems,
   generateActivitySelectOptions,
   generateActivities,
+  generatePeriodSelectOptions
 } from './functions'
 
 
@@ -61,6 +62,7 @@ function setActivitySecondsToComplete(activity, secondsToComplete) {
 }
 
 provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
+provide('periodSelectOptions', generatePeriodSelectOptions())
 provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
 provide('timelineItems', timelineItems.value)
 provide('activitySelectOptions', activitySelectOptions.value)
