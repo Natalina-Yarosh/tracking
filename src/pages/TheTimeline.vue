@@ -6,7 +6,8 @@ import {
   validateActivities,
   isTimeLineItemValid,
   isActivityValid,
-  isPageValid
+  isPageValid,
+  isNumber,
 } from '@/validators'
 import TimelineItem from '../components/TimelineItem.vue'
 import { MIDNIGHT_HOUR, PAGE_TIMELINE } from '@/constants.js'
@@ -31,37 +32,39 @@ const props = defineProps({
     required: true,
     type: String,
     validator: isPageValid,
-  }
-})
-
-const emit = defineEmits({
-  setTimelineItemActivity: ( timelineItem, activity ) => {
-    return [isTimeLineItemValid(timelineItem),  isActivityValid(activity)].every(Boolean)
   },
 })
 
-defineExpose({scrollToHour})
+const emit = defineEmits({
+  setTimelineItemActivity(timelineItem, activity) {
+    return [isTimeLineItemValid(timelineItem), isActivityValid(activity)].every(Boolean)
+  },
+  updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
+    return [isTimeLineItemValid(timelineItem), isNumber(activitySeconds)].every(Boolean)
+  }
+})
+
+defineExpose({ scrollToHour })
 
 const timelineItemRefs = ref([])
 
-watchPostEffect(async() => {
-  if(props.currentPage === PAGE_TIMELINE){
+watchPostEffect(async () => {
+  if (props.currentPage === PAGE_TIMELINE) {
     await nextTick()
 
     scrollToHour(null, false)
   }
 })
 
-function scrollToHour(hour = null, isSmooth = true){
+function scrollToHour(hour = null, isSmooth = true) {
   hour ??= new Date().getHours()
-  const options = {behavior:  isSmooth? 'smooth' : 'instant'};
-  if(hour === MIDNIGHT_HOUR){
+  const options = { behavior: isSmooth ? 'smooth' : 'instant' }
+  if (hour === MIDNIGHT_HOUR) {
     document.body.scrollIntoView(options)
-  }else{
+  } else {
     timelineItemRefs.value[hour - 1].$el.scrollIntoView(options)
   }
 }
-
 </script>
 
 <template>
@@ -74,7 +77,8 @@ function scrollToHour(hour = null, isSmooth = true){
       :activities="activities"
       ref="timelineItemRefs"
       @scroll-to-hour="scrollToHour"
-      @select-activity="emit('setTimelineItemActivity',  timelineItem,  $event )"
+      @select-activity="emit('setTimelineItemActivity', timelineItem, $event)"
+      @update-activity-seconds="emit('updateTimelineItemActivitySeconds', timelineItem, $event)"
     />
   </ul>
 </template>

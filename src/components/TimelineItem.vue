@@ -6,12 +6,12 @@ import {
   isTimeLineItemValid,
   validateSelectOptions,
   isActivityValid,
-  validateActivities, isHourValid
+  validateActivities,
+  isHourValid,
+  isNumber,
 } from '@/validators'
 
-import {
-  NULLABLE_ACTIVITY
-} from '@/constants'
+import { NULLABLE_ACTIVITY } from '@/constants'
 
 const props = defineProps({
   timelineItem: {
@@ -33,14 +33,12 @@ const props = defineProps({
 
 const emit = defineEmits({
   selectActivity: isActivityValid,
-  scrollToHour: isHourValid()
+  scrollToHour: isHourValid(),
+  updateActivitySeconds: isNumber
 })
 
 function selectActivity(id) {
-  emit(
-    'selectActivity',
-    findActivityById(id)
-  )
+  emit('selectActivity', findActivityById(id))
 }
 
 function findActivityById(id) {
@@ -50,13 +48,20 @@ function findActivityById(id) {
 
 <template>
   <li class="relative flex flex-col gap-2 border-t border-gray-200 py-10 px-4">
-    <TimelineHour :hour="timelineItem.hour" @click.prevent="emit('scrollToHour', timelineItem.hour)"/>
+    <TimelineHour
+      :hour="timelineItem.hour"
+      @click.prevent="emit('scrollToHour', timelineItem.hour)"
+    />
     <BaseSelect
       placeholder="Rest"
       :selected="timelineItem.activityId"
       :options="activitySelectOptions"
       @select="selectActivity"
     />
-    <TimelineStopwatch :seconds="timelineItem.activitySeconds" :hour="timelineItem.hour"/>
+    <TimelineStopwatch
+      :seconds="timelineItem.activitySeconds"
+      :hour="timelineItem.hour"
+      @update-seconds="emit('updateActivitySeconds', $event)"
+    />
   </li>
 </template>
