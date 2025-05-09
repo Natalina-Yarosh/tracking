@@ -6,8 +6,7 @@ import {
   validateActivities,
   isTimeLineItemValid,
   isActivityValid,
-  isPageValid,
-  isNumber,
+  isPageValid
 } from '@/validators'
 import TimelineItem from '../components/TimelineItem.vue'
 import { MIDNIGHT_HOUR, PAGE_TIMELINE } from '@/constants.js'
@@ -38,9 +37,6 @@ const props = defineProps({
 const emit = defineEmits({
   setTimelineItemActivity(timelineItem, activity) {
     return [isTimeLineItemValid(timelineItem), isActivityValid(activity)].every(Boolean)
-  },
-  updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
-    return [isTimeLineItemValid(timelineItem), isNumber(activitySeconds)].every(Boolean)
   }
 })
 
@@ -78,7 +74,6 @@ function scrollToHour(hour = null, isSmooth = true) {
       ref="timelineItemRefs"
       @scroll-to-hour="scrollToHour"
       @select-activity="emit('setTimelineItemActivity', timelineItem, $event)"
-      @update-activity-seconds="emit('updateTimelineItemActivitySeconds', timelineItem, $event)"
     />
   </ul>
 </template>
