@@ -3,7 +3,7 @@ import { ref, computed, provide } from 'vue'
 
 import TheHeader from './components/TheHeader.vue'
 import TheNav from './components/TheNav.vue'
-import {  PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from './constants'
+import { PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from './constants'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import TheTimeline from './pages/TheTimeline.vue'
@@ -13,10 +13,8 @@ import {
   generateTimelineItems,
   generateActivitySelectOptions,
   generateActivities,
-  generatePeriodSelectOptions
+  generatePeriodSelectOptions,
 } from './functions'
-
-
 
 const currentPage = ref(normalizePageHash())
 const activities = ref(generateActivities())
@@ -53,7 +51,7 @@ function setTimelineItemActivity(timelineItem, activityId) {
   timelineItem.activityId = activityId
 }
 
-function updateTimelineItemActivitySeconds(timelineItem, activitySeconds){
+function updateTimelineItemActivitySeconds(timelineItem, activitySeconds) {
   timelineItem.activitySeconds += activitySeconds
 }
 
@@ -65,6 +63,7 @@ provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
 provide('setTimelineItemActivity', setTimelineItemActivity)
 provide('setActivitySecondsToComplete', setActivitySecondsToComplete)
 provide('createActivity', createActivity)
+provide('deleteActivity', deleteActivity)
 provide('periodSelectOptions', generatePeriodSelectOptions())
 provide('updateTimelineItemActivitySeconds', updateTimelineItemActivitySeconds)
 provide('timelineItems', timelineItems.value)
@@ -80,11 +79,7 @@ provide('activitySelectOptions', activitySelectOptions.value)
       :current-page="currentPage"
       ref="timeline"
     />
-    <TheActivities
-      v-show="currentPage === PAGE_ACTIVITIES"
-      :activities="activities"
-      @delete-activity="deleteActivity"
-    />
+    <TheActivities v-show="currentPage === PAGE_ACTIVITIES" :activities="activities" />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
   </main>
   <TheNav :current-page="currentPage" @navigate="goTo($event)" />
