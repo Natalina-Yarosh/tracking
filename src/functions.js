@@ -1,20 +1,10 @@
 import {
-  PAGE_TIMELINE,
   HOURS_IN_DAY,
   MINUTES_IN_HOUR,
   SECONDS_IN_MINUTE,
-  MILLISECONDS_IN_SECONDS, SECONDS_IN_HOUR
+  MILLISECONDS_IN_SECONDS
 } from './constants'
-import { isPageValid, isNull } from './validators'
-export function normalizePageHash() {
-  const page = window.location.hash.slice(1)
-  if (isPageValid(page)) {
-    return page
-  }
-
-  window.location.hash = PAGE_TIMELINE
-  return PAGE_TIMELINE
-}
+import { isNull } from './validators'
 
 export function normalizeSelectValue(value) {
   return isNull(value) || isNaN(value) ? value : +value
@@ -32,18 +22,20 @@ export function id() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
 
-export function getTotalActivitySeconds(activity, timelineItems){
+export function getTotalActivitySeconds(activity, timelineItems) {
   return timelineItems
-        .filter(timelineItem => timelineItem.activityId === activity.id)
-        .reduce((totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds), 0)
+    .filter((timelineItem) => timelineItem.activityId === activity.id)
+    .reduce(
+      (totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds),
+      0,
+    )
 }
 
 export function generateTimelineItems(activities) {
-
   return [...Array(HOURS_IN_DAY).keys()].map((hour) => ({
     hour,
     activityId: [0, 1, 2, 3, 4].includes(hour) ? activities[hour % 3].id : null,
-    activitySeconds: [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0, 
+    activitySeconds: [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0,
   }))
 }
 
@@ -67,8 +59,7 @@ function generatePeriodSelectOptionsLabel(periodInMinutes) {
   return `${hours}:${minutes}`
 }
 
-
-export function formatSeconds(seconds){
+export function formatSeconds(seconds) {
   const date = new Date()
   date.setTime(Math.abs(seconds) * MILLISECONDS_IN_SECONDS)
 
