@@ -8,9 +8,7 @@ export const timelineRef = ref()
 export function navigate(page) {
   if (currentPage.value === PAGE_TIMELINE && page === PAGE_TIMELINE) {
     timelineRef.value.scrollToHour()
-  }
-
-  if (page !== PAGE_TIMELINE) {
+  }else if (page !== PAGE_TIMELINE) {
     document.body.scrollIntoView()
   }
   currentPage.value = page
