@@ -9,7 +9,7 @@ import {
   MILLISECONDS_IN_SECONDS,
 } from '@/constants'
 import { isTimeLineItemValid } from '@/validators'
-import { formatSeconds } from '@/functions'
+import { formatSeconds, currentHour } from '@/functions'
 import {updateTimelineItemActivitySecondsKey} from '@/keys'
 
 const props = defineProps({
@@ -25,7 +25,7 @@ const updateTimelineItemActivitySeconds = inject(updateTimelineItemActivitySecon
 const seconds = ref(props.timelineItem.activitySeconds)
 const isRunning = ref(false)
 
-const isStartButtonDisabled = props.timelineItem.hour !== new Date().getHours()
+const isStartButtonDisabled = props.timelineItem.hour !== currentHour()
 
 function start() {
   isRunning.value = setInterval(() => {

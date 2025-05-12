@@ -35,7 +35,7 @@ const deleteActivity = inject(deleteActivityKey)
         class="font-mono flex-grow"
         placeholder="hh:mm"
         :options="periodSelectOptions"
-        @select="setActivitySecondsToComplete(activity, $event || 0)"
+        @select="setActivitySecondsToComplete(activity, $event)"
       />
       <ActivitySecondsToComplete v-if="activity.secondsToComplete" :activity="activity" />
     </div>
