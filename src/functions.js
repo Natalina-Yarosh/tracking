@@ -9,17 +9,8 @@ export function currentHour(){
   return new Date().getHours()
 }
 
-
 export function normalizeSelectValue(value) {
   return isNull(value) || isNaN(value) ? value : +value
-}
-
-export function generateActivities() {
-  return ['Coding', 'Training', 'Reading'].map((name) => ({
-    id: id(),
-    name,
-    secondsToComplete: 0,
-  }))
 }
 
 export function id() {
@@ -33,10 +24,6 @@ export function getTotalActivitySeconds(activity, timelineItems) {
       (totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds),
       0,
     )
-}
-
-export function generateActivitySelectOptions(activities) {
-  return activities.map((activity) => ({ label: activity.name, value: activity.id }))
 }
 
 export function generatePeriodSelectOptions() {
