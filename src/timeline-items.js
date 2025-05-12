@@ -28,3 +28,12 @@ function generateTimelineItems() {
     activitySeconds: [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0,
   }))
 }
+
+export function getTotalActivitySeconds(activity) {
+  return timelineItems.value
+    .filter((timelineItem) => timelineItem.activityId === activity.id)
+    .reduce(
+      (totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds),
+      0,
+    )
+}

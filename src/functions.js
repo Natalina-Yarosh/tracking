@@ -17,15 +17,6 @@ export function id() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2)
 }
 
-export function getTotalActivitySeconds(activity, timelineItems) {
-  return timelineItems
-    .filter((timelineItem) => timelineItem.activityId === activity.id)
-    .reduce(
-      (totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds),
-      0,
-    )
-}
-
 export function generatePeriodSelectOptions() {
   const periodsInMinutes = [15, 30, 45, 60]
   return periodsInMinutes.map((periodInMinutes) => ({
