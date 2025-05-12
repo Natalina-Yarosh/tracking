@@ -20,7 +20,7 @@ const classes = computed(
 )
 
 const secondsDiff = computed(
-  () => getTotalActivitySeconds(props.activity, timelineItems) - props.activity.secondsToComplete,
+  () => getTotalActivitySeconds(props.activity, timelineItems.value) - props.activity.secondsToComplete,
 )
 
 const sign = computed(() => (secondsDiff.value >= 0 ? '+' : '-'))

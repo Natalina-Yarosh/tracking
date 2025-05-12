@@ -1,5 +1,4 @@
 import {
-  HOURS_IN_DAY,
   MINUTES_IN_HOUR,
   SECONDS_IN_MINUTE,
   MILLISECONDS_IN_SECONDS
@@ -34,14 +33,6 @@ export function getTotalActivitySeconds(activity, timelineItems) {
       (totalSeconds, timelineItem) => Math.round(timelineItem.activitySeconds + totalSeconds),
       0,
     )
-}
-
-export function generateTimelineItems(activities) {
-  return [...Array(HOURS_IN_DAY).keys()].map((hour) => ({
-    hour,
-    activityId: [0, 1, 2, 3, 4].includes(hour) ? activities[hour % 3].id : null,
-    activitySeconds: [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0,
-  }))
 }
 
 export function generateActivitySelectOptions(activities) {
