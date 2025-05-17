@@ -1,24 +1,22 @@
 <script setup>
 import { nextTick, ref } from 'vue'
+import { id } from '@/functions'
+import { createActivity } from '@/activities'
 import BaseButton from './BaseButton.vue'
-import { PlusIcon } from '@heroicons/vue/24/outline'
-import {id} from '@/functions'
-import {createActivity} from '@/activities'
+import BaseIcon from './BaseIcon.vue'
 
 const name = ref('')
 
 async function submit() {
-  createActivity( {
-      id: id(),
-      name: name.value,
-      secondsToComplete: 0 ,
-    },
-  )
+  createActivity({
+    id: id(),
+    name: name.value,
+    secondsToComplete: 0,
+  })
   name.value = ''
   await nextTick()
   window.scrollTo(0, document.body.scrollHeight)
 }
-
 </script>
 
 <template>
@@ -30,7 +28,7 @@ async function submit() {
       v-model="name"
     />
     <BaseButton :disabled="name.trim().length === 0">
-      <PlusIcon class="h-8" />
+      <BaseIcon name="Plus" class="h-8" />
     </BaseButton>
   </form>
 </template>
