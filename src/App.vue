@@ -5,7 +5,7 @@ import { PAGE_ACTIVITIES, PAGE_PROGRESS, PAGE_TIMELINE } from './constants'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import TheTimeline from './pages/TheTimeline.vue'
-import { currentPage, timelineRef } from './router'
+import { currentPage } from './router'
 </script>
 
 <template>
@@ -13,7 +13,6 @@ import { currentPage, timelineRef } from './router'
   <main class="flex flex-col flex-grow">
     <TheTimeline
       v-show="currentPage === PAGE_TIMELINE"
-      ref="timelineRef"
     />
     <TheActivities v-show="currentPage === PAGE_ACTIVITIES" />
     <TheProgress v-show="currentPage === PAGE_PROGRESS" />
