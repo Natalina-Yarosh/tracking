@@ -3,7 +3,7 @@ import BaseSelect from './BaseSelect.vue'
 import TimelineStopwatch from './TimelineStopwatch.vue'
 import TimelineHour from './TimelineHour.vue'
 import { isTimeLineItemValid, isUndefined } from '@/validators'
-import { setTimelineItemActivity } from '@/timeline-items'
+import { updateTimelineItem } from '@/timeline-items'
 import { activitySelectOptions } from '@/activities'
 
 defineProps({
@@ -29,7 +29,7 @@ const emit = defineEmits({
       placeholder="Rest"
       :selected="timelineItem.activityId"
       :options="activitySelectOptions"
-      @select="setTimelineItemActivity(timelineItem, $event)"
+      @select="updateTimelineItem(timelineItem, { activityId: $event})"
     />
     <TimelineStopwatch
       :timeline-item="timelineItem"

@@ -10,7 +10,7 @@ import {
 } from '@/constants'
 import { isTimeLineItemValid } from '@/validators'
 import { formatSeconds, currentHour } from '@/functions'
-import {updateTimelineItemActivitySeconds} from '@/timeline-items'
+import { updateTimelineItem } from '@/timeline-items'
 
 const props = defineProps({
   timelineItem: {
@@ -26,13 +26,15 @@ const isRunning = ref(false)
 const isStartButtonDisabled = props.timelineItem.hour !== currentHour()
 
 watch(
-  ()=> props.timelineItem.activityId,
-  () =>  updateTimelineItemActivitySeconds(props.timelineItem, seconds.value)
+  () => props.timelineItem.activityId,
+  () => updateTimelineItem(props.timelineItem, { activitySeconds: seconds.value }),
 )
 
 function start() {
   isRunning.value = setInterval(() => {
-    updateTimelineItemActivitySeconds(props.timelineItem, props.timelineItem.activitySeconds + 1)
+    updateTimelineItem(props.timelineItem, {
+      activitySeconds: props.timelineItem.activitySeconds + 1,
+    })
 
     seconds.value++
   }, MILLISECONDS_IN_SECONDS)
@@ -47,7 +49,9 @@ function stop() {
 function reset() {
   stop()
 
-  updateTimelineItemActivitySeconds(props.timelineItem, props.timelineItem.activitySeconds - seconds.value)
+  updateTimelineItem(props.timelineItem, {
+    activitySeconds: props.timelineItem.activitySeconds - seconds.value,
+  })
 
   seconds.value = 0
 }
