@@ -8,9 +8,8 @@ import TheNav from './components/TheNav.vue'
   <TheHeader />
   <main class="flex flex-col flex-grow">
     <KeepAlive>
-      <conponents :is="routes[currentPage]" />
+      <component :is="routes[currentPage]" />
     </KeepAlive>
-   
   </main>
   <TheNav />
 </template>
