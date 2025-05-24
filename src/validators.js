@@ -53,7 +53,7 @@ export function isSelectValueValid(value) {
   return isNotEmptyString(value) || isNumberOrNull(value)
 }
 
-function isNotEmptyString(value) {
+export function isNotEmptyString(value) {
   return isString(value) && value.length > 0
 }
 function isBetween(value, start, end) {
