@@ -1,14 +1,19 @@
-import { NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR, BUTTON_TYPES} from './constants'
+import { NAV_ITEMS, HOURS_IN_DAY, MIDNIGHT_HOUR, BUTTON_TYPES } from './constants'
+import { ICONS } from './icons'
 
 export function isPageValid(page) {
-  return NAV_ITEMS.some(navItem => navItem.page === page)
+  return NAV_ITEMS.some((navItem) => navItem.page === page)
 }
 
-export function isNavItemValid(navItem){
+export function isIconValid(icon) {
+  return Object.keys(ICONS).includes(icon)
+}
+
+export function isNavItemValid(navItem) {
   return NAV_ITEMS.includes(navItem)
 }
 
-export function isButtonTypeValid(type){
+export function isButtonTypeValid(type) {
   return BUTTON_TYPES.includes(type)
 }
 
@@ -25,20 +30,15 @@ export function isHourValid(hour) {
 }
 
 export function validateActivities(activities) {
-  return  activities.every(isActivityValid)
+  return activities.every(isActivityValid)
 }
 
-export function isActivityValid({id, name, secondsToComplete}) {
-
-  if(isNull(id)) {
+export function isActivityValid({ id, name, secondsToComplete }) {
+  if (isNull(id)) {
     return true
   }
-  
-  return [
-    isNotEmptyString(id),
-    isNotEmptyString(name),
-    isNumber(secondsToComplete)
-  ].every(Boolean)
+
+  return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondsToComplete)].every(Boolean)
 }
 
 export function validateSelectOptions(options) {
@@ -46,7 +46,7 @@ export function validateSelectOptions(options) {
 }
 
 function isSelectOptionValid({ value, label }) {
-  return (isNumber(value) ||  isNotEmptyString(value)) &&  isNotEmptyString(label)
+  return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
 }
 
 export function isSelectValueValid(value) {
@@ -54,10 +54,10 @@ export function isSelectValueValid(value) {
 }
 
 function isNotEmptyString(value) {
-    return isString(value) && value.length > 0
+  return isString(value) && value.length > 0
 }
-function isBetween(value, start, end ) {
-  return  value >= start && value <= end
+function isBetween(value, start, end) {
+  return value >= start && value <= end
 }
 
 export function isUndefinedOrNull(value) {

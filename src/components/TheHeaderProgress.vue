@@ -2,12 +2,13 @@
 import { PAGE_PROGRESS } from '../constants'
 import { navigate } from '../router'
 import BaseIcon from './BaseIcon.vue'
+import {ICON_CHECK_CIRCLE} from '../icons'
 </script>
 <template>
   <a :href="`#${PAGE_PROGRESS}`" class="text-sm" @click="navigate(PAGE_PROGRESS)">
     <p v-if="false" class="flex items-center gap-1">
       Day complete!
-      <BaseIcon name="CheckCircle" class="h-7 text-green-500" />
+      <BaseIcon :name=ICON_CHECK_CIRCLE class="h-7 text-green-500" />
     </p>
     <div v-else class="flex items-center gap-1">
       <p>Progress: <span class="font-mono">20%</span></p>

@@ -1,11 +1,7 @@
-import {
-  MINUTES_IN_HOUR,
-  SECONDS_IN_MINUTE,
-  MILLISECONDS_IN_SECONDS
-} from './constants'
+import { MINUTES_IN_HOUR, SECONDS_IN_MINUTE, MILLISECONDS_IN_SECONDS } from './constants'
 import { isNull } from './validators'
 
-export function currentHour(){
+export function currentHour() {
   return new Date().getHours()
 }
 
