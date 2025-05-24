@@ -3,6 +3,10 @@ import { id } from '@/functions.js'
 import { SECONDS_IN_HOUR } from '@/constants.js'
 
 export const activities = ref(generateActivities())
+export const trackedActivities = computed(() =>
+  activities.value.filter(({ secondsToComplete }) => secondsToComplete),
+)
+
 export const activitySelectOptions = computed(() => generateActivitySelectOptions(activities.value))
 
 export function createActivity(activity) {
@@ -17,12 +21,11 @@ export function deleteActivity(activity) {
   activities.value.splice(activities.value.indexOf(activity), 1)
 }
 
-
 export function setActivitySecondsToComplete(activity, secondsToComplete) {
-  activity.secondsToComplete = secondsToComplete  || 0
+  activity.secondsToComplete = secondsToComplete || 0
 }
 
- function generateActivities() {
+function generateActivities() {
   return ['Coding', 'Training', 'Reading'].map((name, hour) => ({
     id: id(),
     name,
@@ -30,6 +33,6 @@ export function setActivitySecondsToComplete(activity, secondsToComplete) {
   }))
 }
 
- function generateActivitySelectOptions(activities) {
+function generateActivitySelectOptions(activities) {
   return activities.map((activity) => ({ label: activity.name, value: activity.id }))
 }
