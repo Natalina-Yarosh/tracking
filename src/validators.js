@@ -45,19 +45,8 @@ export function validateSelectOptions(options) {
   return options.every(isSelectOptionValid)
 }
 
-function isSelectOptionValid({ value, label }) {
-  return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
-}
-
 export function isSelectValueValid(value) {
   return isNotEmptyString(value) || isNumberOrNull(value)
-}
-
-export function isNotEmptyString(value) {
-  return isString(value) && value.length > 0
-}
-function isBetween(value, start, end) {
-  return value >= start && value <= end
 }
 
 export function isUndefinedOrNull(value) {
@@ -78,6 +67,17 @@ export function isUndefined(value) {
 
 export function isNumber(value) {
   return typeof value === 'number'
+}
+
+function isSelectOptionValid({ value, label }) {
+  return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
+}
+
+function isNotEmptyString(value) {
+  return isString(value) && value.length > 0
+}
+function isBetween(value, start, end) {
+  return value >= start && value <= end
 }
 
 function isString(value) {
