@@ -1,9 +1,14 @@
 <script setup>
 import {computed} from 'vue'
-import { getActivityProgress } from '@/activities.js'
 import { formatSeconds, getProgressColorClass } from '@/functions.js'
-import { getTotalActivitySeconds } from '../timeline-items.js'
+import {
+  calculateTrackedActivitySeconds
+} from '../timeline-items.js'
+import {
+  calculateActivityCompletionPercentage
+} from '../activities.js'
 import { isActivityValid } from '@/validators.js'
+import { HUNDRED_PERCENT } from '@/constants.js'
 
 const props = defineProps({
   activity: {
@@ -13,9 +18,14 @@ const props = defineProps({
   }
 })
 
+const scaleWidth = computed(() => Math.min(percentage.value, HUNDRED_PERCENT))
 
-const progress = computed(() => getActivityProgress(props.activity))
-
+const percentage = computed(() => {
+  return calculateActivityCompletionPercentage(
+    props.activity,
+    calculateTrackedActivitySeconds(props.activity)
+  )
+})
 
 </script>
 
@@ -23,12 +33,12 @@ const progress = computed(() => getActivityProgress(props.activity))
   <li class="flex flex-col gap-1 p-4">
     <div class="truncate text-xl">{{ activity.name }}</div>
     <div class="flex h-5 overflow-hidden rounded bg-neutral-200">
-      <div :class="getProgressColorClass(progress)" :style="`width: ${progress}%`"></div>
+      <div :class="getProgressColorClass(percentage)" :style="`width: ${scaleWidth}%`"></div>
     </div>
     <div class="flex justify-between font-mono text-sm">
-      <span>{{ progress }}%</span>
+      <span>{{ percentage }}%</span>
       <span>
-        {{ formatSeconds(getTotalActivitySeconds(activity))  }} / {{ formatSeconds(activity.secondsToComplete) }}
+        {{ formatSeconds(calculateTrackedActivitySeconds(activity))  }} / {{ formatSeconds(activity.secondsToComplete) }}
       </span>
     </div>
   </li>
