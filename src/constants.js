@@ -20,6 +20,8 @@ export const NAV_ITEMS = [
   },
 ]
 
+
+
 export const MINUTES_IN_HOUR = 60
 export const SECONDS_IN_MINUTE = 60
 export const SECONDS_IN_HOUR = MINUTES_IN_HOUR * SECONDS_IN_MINUTE
@@ -41,3 +43,4 @@ export const BUTTON_TYPES = [
 ]
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
+export const HUNDRED_PERCENT = 100
