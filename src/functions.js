@@ -1,4 +1,9 @@
-import { MINUTES_IN_HOUR, SECONDS_IN_MINUTE, MILLISECONDS_IN_SECONDS } from './constants'
+import {
+  MINUTES_IN_HOUR,
+  SECONDS_IN_MINUTE,
+  MILLISECONDS_IN_SECONDS,
+  LOW_PERCENT, MEDIUM_PERCENT, HUNDRED_PERCENT
+} from './constants'
 import { isNull } from './validators'
 
 export function currentHour() {
@@ -36,4 +41,12 @@ export function formatSeconds(seconds) {
   const utc = date.toUTCString()
 
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
+}
+
+export function getProgressColorClass(percentage){
+  if(percentage < LOW_PERCENT) return 'bg-red-500'
+  if(percentage < MEDIUM_PERCENT) return 'bg-yellow-500'
+  if(percentage < HUNDRED_PERCENT) return 'bg-blue-500'
+
+  return 'bg-green-500'
 }
