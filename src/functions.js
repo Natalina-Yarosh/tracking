@@ -35,7 +35,7 @@ function generatePeriodSelectOptionsLabel(periodInMinutes) {
 }
 
 export function formatSecondsWithSign(seconds) {
-  return `seconds >= 0 ? '+' : '-'${formatSeconds(seconds)}`
+  return `${seconds >= 0 ? '+' : '-'}${formatSeconds(seconds)}`
 }
 
 export function formatSeconds(seconds) {
