@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { formatSeconds } from '@/functions.js'
+import { formatSecondsWithSign } from '@/functions.js'
 import { isActivityValid } from '@/validators'
 import { timelineItems, calculateTrackedActivitySeconds } from '@/timeline-items'
 
@@ -12,26 +12,19 @@ const props = defineProps({
   },
 })
 
-const classes = computed(
-  () => `flex items-center rounded px-2 font-mono text-xl ${colorClasses.value}`,
-)
+const classes = computed(() => [
+  'flex items-center rounded px-2 font-mono text-xl',
+  remainingSeconds.value < 0 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600',
+])
 
-const secondsDiff = computed(
+const remainingSeconds = computed(
   () =>
     calculateTrackedActivitySeconds(timelineItems.value, props.activity) -
     props.activity.secondsToComplete,
 )
-
-const sign = computed(() => (secondsDiff.value >= 0 ? '+' : '-'))
-
-const seconds = computed(() => `${sign.value}${formatSeconds(secondsDiff.value)}`)
-
-const colorClasses = computed(() =>
-  secondsDiff.value < 0 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600',
-)
 </script>
 <template>
   <div :class="classes">
-    {{ seconds }}
+    {{ formatSecondsWithSign(remainingSeconds) }}
   </div>
 </template>
