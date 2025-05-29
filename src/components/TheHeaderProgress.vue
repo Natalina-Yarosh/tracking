@@ -12,7 +12,7 @@ import {ICON_CHECK_CIRCLE} from '../icons'
     </p>
     <div v-else class="flex items-center gap-1">
       <p>Progress: <span class="font-mono">20%</span></p>
-      <div class="w-3 h-3 rounded-full bg-red-500"></div>
+      <div class="w-3 h-3 rounded-full bg-red-500" />
     </div>
   </a>
 </template>
