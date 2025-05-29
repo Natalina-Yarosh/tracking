@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { HOURS_IN_DAY, MIDNIGHT_HOUR } from '@/constants.js'
 import { currentHour } from '@/functions'
+// import { activities } from '@/activities.js'
 
 export const timelineItemRefs = ref([])
 export const timelineItems = ref(generateTimelineItems())
@@ -21,8 +22,8 @@ export function resetTimelineItemActivities(timelineItems,activity) {
 function generateTimelineItems() {
   return [...Array(HOURS_IN_DAY).keys()].map((hour) => ({
     hour,
-    activityId: null, //  [0, 1, 2, 3, 4].includes(hour) ? activities.value[hour % 3].id : null,
-    activitySeconds: 0, //  [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0,
+    activityId:  null, // [0, 1, 2, 3, 4].includes(hour) ? activities.value[hour % 3].id : null,
+    activitySeconds: 0 //   [0, 1, 2, 3, 4].includes(hour) ? hour * 600 : 0,
   }))
 }
 
