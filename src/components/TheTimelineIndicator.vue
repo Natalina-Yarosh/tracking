@@ -1,40 +1,52 @@
 <script setup>
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect, onActivated, onDeactivated } from 'vue'
 import {
   HUNDRED_PERCENT,
   MILLISECONDS_IN_SECONDS,
   MINUTES_IN_HOUR,
   SECONDS_IN_DAY,
-  SECONDS_IN_MINUTE
+  SECONDS_IN_MINUTE,
 } from '@/constants.js'
 
 const secondsSinceMidnight = ref(calculateSecondsSinceMidnight())
 const indicatorRef = ref()
 
-setInterval(() => secondsSinceMidnight.value += 5 * 60, MILLISECONDS_IN_SECONDS )
+let timer = null
 
-const topOffset = computed(() => (secondsSinceMidnightInPercentage.value  * getTimelineHeight()) / HUNDRED_PERCENT)
+onActivated(() => {
+  secondsSinceMidnight.value = calculateSecondsSinceMidnight()
+  timer = setInterval(() => (secondsSinceMidnight.value += 5 * 60), MILLISECONDS_IN_SECONDS)
+})
 
+onDeactivated(() => clearInterval(timer))
+
+const topOffset = computed(
+  () => (secondsSinceMidnightInPercentage.value * getTimelineHeight()) / HUNDRED_PERCENT,
+)
 
 const secondsSinceMidnightInPercentage = computed(
-  () => (HUNDRED_PERCENT * secondsSinceMidnight.value ) / SECONDS_IN_DAY
+  () => (HUNDRED_PERCENT * secondsSinceMidnight.value) / SECONDS_IN_DAY,
 )
 
 watchEffect(() => {
-  if(secondsSinceMidnight.value > SECONDS_IN_DAY){
+  if (secondsSinceMidnight.value > SECONDS_IN_DAY) {
     secondsSinceMidnight.value = 0
   }
 })
 
-function calculateSecondsSinceMidnight(){
+function calculateSecondsSinceMidnight() {
   const now = new Date()
 
   now.setHours(23)
 
-  return SECONDS_IN_MINUTE * MINUTES_IN_HOUR * now.getHours() + SECONDS_IN_MINUTE * now.getMinutes() + now.getSeconds()
+  return (
+    SECONDS_IN_MINUTE * MINUTES_IN_HOUR * now.getHours() +
+    SECONDS_IN_MINUTE * now.getMinutes() +
+    now.getSeconds()
+  )
 }
 
-function getTimelineHeight(){
+function getTimelineHeight() {
   return indicatorRef.value?.parentNode.getBoundingClientRect().height
 }
 </script>
@@ -42,6 +54,6 @@ function getTimelineHeight(){
   <hr
     ref="indicatorRef"
     class="pointer-events-none absolute z-10 w-full border-b-2 border-red-600"
-    :style="{ top:`${topOffset}px`}"
-  >
+    :style="{ top: `${topOffset}px` }"
+  />
 </template>
