@@ -1,4 +1,4 @@
-import { APP_NAME, MILLISECONDS_IN_SECONDS } from './constants'
+import { APP_NAME, MILLISECONDS_IN_SECONDS, SECONDS_IN_HOUR } from './constants'
 import { isToday, today } from './time'
 import { timelineItems } from '@/timeline-items.js'
 import { activities } from '@/activities.js'
@@ -32,7 +32,28 @@ export function saveState() {
 function syncIdleSeconds(timelineItems, lastActiveAt) {
   const activeTimelineItem = timelineItems.find(({isActive}) => isActive)
   if(activeTimelineItem) {
-    activeTimelineItem.activitySeconds += (today() - lastActiveAt) / MILLISECONDS_IN_SECONDS
+    activeTimelineItem.activitySeconds += calculateIdleSeconds(lastActiveAt)
   }
   return timelineItems
+}
+
+
+function calculateIdleSeconds(lastActiveAt){
+  let idleMilliseconds = today() - lastActiveAt
+
+  if(lastActiveAt.getHours() !== today().getHours()){
+    idleMilliseconds = getEndOfIdleHour(lastActiveAt) - lastActiveAt
+  }
+  return idleMilliseconds / MILLISECONDS_IN_SECONDS
+}
+
+
+function getEndOfIdleHour(lastActiveAt){
+  const endOfIdleHour = new Date(lastActiveAt)
+
+  endOfIdleHour.setHours(endOfIdleHour.getTime() + SECONDS_IN_HOUR * MILLISECONDS_IN_SECONDS)
+
+  endOfIdleHour.setMinutes(0, 0, 0)
+
+  return endOfIdleHour
 }

@@ -3,12 +3,11 @@ import {
   HUNDRED_PERCENT,
   MILLISECONDS_IN_SECONDS,
   SECONDS_IN_DAY,
-  SECONDS_IN_MINUTE,
 } from '@/constants.js'
 
 export function today() {
   const today = new Date()
-  today.setHours(0, 0)
+  // today.setHours(0, 0)
   return today
 }
 
@@ -36,7 +35,7 @@ let timer = null
 export function startTimer() {
   now.value = today()
   timer = setInterval(
-    () => (now.value = new Date(now.value.getTime() + SECONDS_IN_MINUTE * MILLISECONDS_IN_SECONDS)),
+    () => (now.value = new Date(now.value.getTime() +  MILLISECONDS_IN_SECONDS)),
     MILLISECONDS_IN_SECONDS,
   )
 }
