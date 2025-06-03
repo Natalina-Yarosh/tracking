@@ -9,7 +9,6 @@ export const timelineItems = ref(generateTimelineItems())
 let timelineItemTimer = null;
 
 export function startTimelineItemTimer(activeTimelineItem) {
-  console.log('startTimelineItemTimer')
   timelineItemTimer = setInterval(() => {
     updateTimelineItem(activeTimelineItem, {
       activitySeconds : activeTimelineItem.activitySeconds + 1
@@ -17,7 +16,6 @@ export function startTimelineItemTimer(activeTimelineItem) {
   }, MILLISECONDS_IN_SECONDS)
 }
 export function stopTimelineItemTimer() {
-  console.log('stopTimelineItemTimer')
   clearInterval(timelineItemTimer)
 }
 
