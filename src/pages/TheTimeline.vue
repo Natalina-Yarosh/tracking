@@ -5,13 +5,11 @@ import {
   timelineItems,
   timelineItemRefs,
   scrollToCurrentHour,
-  stopTimelineItemTimer
 } from '@/timeline-items.js'
 
 import TheTimelineIndicator from '@/components/TheTimelineIndicator.vue'
 import { startCurrentDateTimer, stopCurrentDateTimer } from '@/time'
 
-stopTimelineItemTimer()
 
 onActivated(() => {
   scrollToCurrentHour()
