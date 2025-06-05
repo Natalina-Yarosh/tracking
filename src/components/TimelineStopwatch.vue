@@ -5,7 +5,7 @@ import { formatSeconds } from '@/functions'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import { now } from '@/time.js'
-import { timelineItemTimer, resetTimelineItemTimer,  stopTimelineItemTimer, startTimelineItemTimer } from '@/timeline-items'
+import { timelineItemTimer, resetTimelineItemTimer,  stopTimelineItemTimer, startTimelineItemTimer } from '@/timeline-item-timer'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
 
 defineProps({
