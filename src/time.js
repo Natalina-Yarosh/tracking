@@ -7,9 +7,7 @@ import {
 } from '@/constants.js'
 
 export function today() {
-  const today = new Date()
-  // today.setHours(0, 0)
-  return today
+  return new Date()
 }
 
 export function tomorrow() {
@@ -32,7 +30,7 @@ export function isToday(date) {
   return date.toDateString() === today().toDateString()
 }
 
-export function toSeconds(milliseconds){
+export function toSeconds(milliseconds) {
   return Math.round(milliseconds / MILLISECONDS_IN_SECONDS)
 }
 
@@ -49,10 +47,7 @@ let currentDateTimer = null
 
 export function startCurrentDateTimer() {
   now.value = today()
-  currentDateTimer = setInterval(
-    () => (now.value = new Date(now.value.getTime() + MILLISECONDS_IN_SECONDS)),
-    MILLISECONDS_IN_SECONDS,
-  )
+  currentDateTimer = setInterval(() => (now.value = today()), MILLISECONDS_IN_SECONDS)
 }
 
 export function stopCurrentDateTimer() {
