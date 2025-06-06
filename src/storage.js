@@ -4,11 +4,13 @@ import { activeTimelineItem, initializeTimelineItems, timelineItems } from '@/ti
 import { activities, initializeActivities } from '@/activities.js'
 import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
 
-export function syncState(shouldLoad = true){
+export function syncState(shouldLoad = true) {
   shouldLoad ? saveState() : loadState()
 
-  if(activeTimelineItem.value){
-    shouldLoad ? startTimelineItemTimer(activeTimelineItem.value) : stopTimelineItemTimer(activeTimelineItem.value)
+  if (activeTimelineItem.value) {
+    shouldLoad
+      ? startTimelineItemTimer()
+      : stopTimelineItemTimer()
   }
 }
 
@@ -18,8 +20,8 @@ function loadState() {
   initializeTimelineItems(state)
 }
 
-function loadFromLocalStorage(){
-  return  JSON.parse(localStorage.getItem(APP_NAME) ?? '{}')
+function loadFromLocalStorage() {
+  return JSON.parse(localStorage.getItem(APP_NAME) ?? '{}')
 }
 
 function saveState() {
