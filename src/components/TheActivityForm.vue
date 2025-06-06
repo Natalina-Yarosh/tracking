@@ -28,7 +28,7 @@ async function submit() {
       placeholder="Activity name"
       v-model="name"
     />
-    <BaseButton :disabled="name.trim().length === 0">
+    <BaseButton :disabled="name.trim() === ''">
       <BaseIcon :name= ICON_PLUS  />
     </BaseButton>
   </form>

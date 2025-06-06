@@ -5,12 +5,10 @@ import { activities, initializeActivities } from '@/activities.js'
 import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
 
 export function syncState(shouldLoad = true) {
-  shouldLoad ? saveState() : loadState()
+  shouldLoad ? loadState() : saveState()
 
   if (activeTimelineItem.value) {
-    shouldLoad
-      ? startTimelineItemTimer()
-      : stopTimelineItemTimer()
+    shouldLoad ? startTimelineItemTimer() : stopTimelineItemTimer()
   }
 }
 

@@ -1,9 +1,8 @@
 import { ref, computed, watch } from 'vue'
 import { HOURS_IN_DAY, MIDNIGHT_HOUR } from '@/constants.js'
 import { endOfHour, isToday, today, toSeconds, now } from '@/time.js'
-import {stopTimelineItemTimer} from './timeline-item-timer.js'
+import { stopTimelineItemTimer } from './timeline-item-timer.js'
 
-export const timelineItemRefs = ref([])
 export const timelineItems = ref([])
 
 export const activeTimelineItem = computed(() =>
@@ -54,9 +53,13 @@ export function scrollToCurrentHour(isSmooth = false) {
 }
 
 export function scrollToHour(hour, isSmooth = true) {
-  const el = hour === MIDNIGHT_HOUR ? document.body : timelineItemRefs.value[hour - 1].$el
-
-  el.scrollIntoView({ behavior: isSmooth ? 'smooth' : 'instant' })
+  try {
+    const el = hour === MIDNIGHT_HOUR ? document.body : document.querySelector(`[data-hour="${hour}"]`)
+    console.log(el)
+    el.scrollIntoView({ behavior: isSmooth ? 'smooth' : 'instant' })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 function resetTimelineItems() {

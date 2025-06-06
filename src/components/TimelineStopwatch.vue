@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from '@/constants'
 import { isTimeLineItemValid } from '@/validators'
 import { formatSeconds } from '@/functions'

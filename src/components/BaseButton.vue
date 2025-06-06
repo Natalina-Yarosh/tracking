@@ -4,7 +4,7 @@ import {
   BUTTON_TYPE_NEUTRAL,
   BUTTON_TYPE_DANGER,
   BUTTON_TYPE_SUCCESS,
-  BUTTON_TYPE_WARNING
+  BUTTON_TYPE_WARNING,
 } from '../constants'
 
 const typeClasses = {
@@ -12,7 +12,7 @@ const typeClasses = {
   [BUTTON_TYPE_DANGER]: 'bg-red-500 p-3 enabled:hover:bg-red-600 text-white',
   [BUTTON_TYPE_PRIMARY]: 'bg-blue-500 p-3 enabled:hover:bg-blue-600 text-white',
   [BUTTON_TYPE_SUCCESS]: 'bg-green-500 p-3 enabled:hover:bg-green-600 text-white',
-  [BUTTON_TYPE_WARNING]: 'bg-yellow-500 p-3 enabled:hover:bg-yellow-600 text-white'
+  [BUTTON_TYPE_WARNING]: 'bg-yellow-500 p-3 enabled:hover:bg-yellow-600 text-white',
 }
 </script>
 <script setup>
@@ -22,18 +22,18 @@ const props = defineProps({
   type: {
     default: BUTTON_TYPE_PRIMARY,
     type: String,
-    validate: isButtonTypeValid,
+    validator: isButtonTypeValid,
   },
 })
+
 const classes = [
   'rounded  disabled:cursor-not-allowed disabled:opacity-50',
-  typeClasses[props.type]
+  typeClasses[props.type],
 ]
-
 </script>
 
 <template>
   <button :class="classes">
-    <slot />
+    <slot></slot>
   </button>
 </template>

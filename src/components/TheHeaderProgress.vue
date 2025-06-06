@@ -15,7 +15,7 @@ const { colorClass, percentage } = useTotalProgress()
     </div>
     <div v-else class="flex items-center gap-1">
       Day complete!
-      <BaseIcon :name=ICON_CHECK_CIRCLE class="h-7 text-green-500" />
+      <BaseIcon :name="ICON_CHECK_CIRCLE" class="h-7 text-green-500" />
     </div>
   </a>
 </template>
