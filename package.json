@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
@@ -13,7 +13,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "vue": "^3.5.13"
+    "vue": "^3.5.16"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
@@ -25,7 +25,9 @@
     "postcss": "^8.5.3",
     "prettier": "^3.5.1",
     "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
     "vite": "^6.1.0",
-    "vite-plugin-vue-devtools": "^7.7.2"
+    "vite-plugin-vue-devtools": "^7.7.2",
+    "vue-tsc": "^2.2.10"
   }
 }
