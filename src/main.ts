@@ -4,9 +4,6 @@ import App from './App.vue'
 import { syncState } from './storage.js'
 import { startCurrentDateTimer } from './time'
 
-const name:string = "test";
-console.log(name)
-
 syncState()
 
 startCurrentDateTimer()

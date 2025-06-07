@@ -1,4 +1,4 @@
-# ontracking 
+# Tyme Tracker 
 [app](https://tracking-fawn.vercel.app/#progress)
 
 

@@ -55,7 +55,6 @@ export function scrollToCurrentHour(isSmooth = false) {
 export function scrollToHour(hour, isSmooth = true) {
   try {
     const el = hour === MIDNIGHT_HOUR ? document.body : document.querySelector(`[data-hour="${hour}"]`)
-    console.log(el)
     el.scrollIntoView({ behavior: isSmooth ? 'smooth' : 'instant' })
   } catch (error) {
     console.log(error)
