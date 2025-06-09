@@ -23,14 +23,14 @@ export const ICON_PLAY = 'Play'
 export const ICON_PLUS = 'Plus'
 
 export const ICONS = {
-    [ICON_CHECK_CIRCLE]: CheckCircle,
-    [ICON_LIST_BULLET]: ListBullet,
-    [ICON_ARROW_PATH]: ArrowPath,
-    [ICON_CHART_BAR]: ChartBar,
-    [ICON_CLOCK]: Clock,
-    [ICON_TRASH]: Trash,
-    [ICON_X_MARK]: XMark,
-    [ICON_PAUSE]: Pause,
-    [ICON_PLAY]: Play,
-    [ICON_PLUS]: Plus
+  [ICON_CHECK_CIRCLE]: CheckCircle,
+  [ICON_LIST_BULLET]: ListBullet,
+  [ICON_ARROW_PATH]: ArrowPath,
+  [ICON_CHART_BAR]: ChartBar,
+  [ICON_CLOCK]: Clock,
+  [ICON_TRASH]: Trash,
+  [ICON_X_MARK]: XMark,
+  [ICON_PAUSE]: Pause,
+  [ICON_PLAY]: Play,
+  [ICON_PLUS]: Plus,
 }
