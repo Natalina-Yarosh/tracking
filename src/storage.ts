@@ -1,10 +1,11 @@
 import { LOCAL_STORAGE_KEY } from './constants'
 import { today } from './time'
-import { activeTimelineItem, initializeTimelineItems, timelineItems } from '@/timeline-items.js'
-import { activities, initializeActivities } from '@/activities.js'
-import { startTimelineItemTimer, stopTimelineItemTimer } from '@/timeline-item-timer.js'
+import { activeTimelineItem, initializeTimelineItems, timelineItems } from './timeline-items.js'
+import { activities, initializeActivities } from './activities.ts'
+import { startTimelineItemTimer, stopTimelineItemTimer } from './timeline-item-timer.js'
 
-export function syncState(shouldLoad = true) {
+import type { State } from './types'
+export function syncState(shouldLoad = true): void {
   shouldLoad ? loadState() : saveState()
 
   if (activeTimelineItem.value) {
@@ -12,17 +13,17 @@ export function syncState(shouldLoad = true) {
   }
 }
 
-function loadState() {
+function loadState(): void {
   const state = loadFromLocalStorage()
   initializeActivities(state)
   initializeTimelineItems(state)
 }
 
-function loadFromLocalStorage() {
+function loadFromLocalStorage(): State {
   return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) ?? '{}')
 }
 
-function saveState() {
+function saveState(): void {
   localStorage.setItem(
     LOCAL_STORAGE_KEY,
     JSON.stringify({
