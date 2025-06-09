@@ -5,7 +5,7 @@ import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import TheTimeline from './pages/TheTimeline.vue'
 import type { Component } from 'vue'
-import type { PageName } from './types'
+import type { PageName } from './types.ts'
 
 export const routes: Record<PageName, Component> = {
   [PAGE_TIMELINE]: TheTimeline,

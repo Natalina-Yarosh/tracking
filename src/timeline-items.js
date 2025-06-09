@@ -1,6 +1,6 @@
 import { ref, computed, watch } from 'vue'
-import { HOURS_IN_DAY, MIDNIGHT_HOUR } from '@/constants.js'
-import { endOfHour, isToday, today, toSeconds, now } from '@/time.js'
+import { HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants.ts'
+import { endOfHour, isToday, today, toSeconds, now } from './time.ts'
 import { stopTimelineItemTimer } from './timeline-item-timer.js'
 
 export const timelineItems = ref([])
