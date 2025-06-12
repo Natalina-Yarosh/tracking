@@ -1,10 +1,10 @@
 <script setup>
-import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from '@/constants'
+import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from '../constants.ts'
 import { isTimeLineItemValid } from '../validators.ts'
-import { formatSeconds } from '@/functions'
+import { formatSeconds } from '../functions.ts'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { now } from '@/time.js'
+import { now } from '../time.ts'
 import {
   resetTimelineItemTimer,
   stopTimelineItemTimer,

@@ -1,8 +1,8 @@
 <script setup>
-import { formatSeconds } from '@/functions.js'
+import { formatSeconds } from '../functions.ts'
 import { isActivityValid } from '../validators.ts'
-import { HUNDRED_PERCENT } from '@/constants.js'
-import { useProgress } from '@/composables/progress.js'
+import { HUNDRED_PERCENT } from '../constants.ts'
+import { useProgress } from '../composables/progress.ts'
 
 const props = defineProps({
   activity: {

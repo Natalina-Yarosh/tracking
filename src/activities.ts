@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import { HUNDRED_PERCENT } from './constants.js'
+import { HUNDRED_PERCENT } from './constants.ts'
 
 import type { Activity, SelectOption, State } from './types'
 

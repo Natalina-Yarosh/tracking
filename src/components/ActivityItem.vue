@@ -2,11 +2,11 @@
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
 import BaseSelect from './BaseSelect.vue'
-import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '../constants'
+import { BUTTON_TYPE_DANGER, PERIOD_SELECT_OPTIONS } from '../constants.ts'
 import { isActivityValid } from '../validators.ts'
-import { updateActivity, deleteActivity } from '@/activities.js'
-import { timelineItems, resetTimelineItemActivities } from '@/timeline-items.ts'
-import { ICON_TRASH } from '@/icons'
+import { updateActivity, deleteActivity } from '../activities.ts'
+import { timelineItems, resetTimelineItemActivities } from '../timeline-items.ts'
+import { ICON_TRASH } from '../icons.ts'
 import RemainingActivitySeconds from './RemainingActivitySeconds.vue'
 
 defineProps({
