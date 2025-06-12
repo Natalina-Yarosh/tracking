@@ -1,17 +1,12 @@
 import { generatePeriodSelectOptions } from './functions.ts'
 import { ICON_CLOCK, ICON_LIST_BULLET, ICON_CHART_BAR } from './icons.ts'
-import type { PageName } from './types.ts'
+import type { NavItem, ButtonType } from './types.ts'
 
 export const LOCAL_STORAGE_KEY = 'tyme-tracker'
 
 export const PAGE_TIMELINE = 'timeline'
 export const PAGE_ACTIVITIES = 'activities'
 export const PAGE_PROGRESS = 'progress'
-
-interface NavItem {
-  page: PageName
-  icon: any
-}
 
 export const NAV_ITEMS: NavItem[] = [
   {
@@ -35,13 +30,6 @@ export const HOURS_IN_DAY = 24
 export const MIDNIGHT_HOUR = 0
 export const SECONDS_IN_DAY = HOURS_IN_DAY * SECONDS_IN_HOUR
 export const MILLISECONDS_IN_SECONDS = 1000
-
-type ButtonType =
-  | typeof BUTTON_TYPE_DANGER
-  | typeof BUTTON_TYPE_NEUTRAL
-  | typeof BUTTON_TYPE_PRIMARY
-  | typeof BUTTON_TYPE_SUCCESS
-  | typeof BUTTON_TYPE_WARNING
 
 export const BUTTON_TYPE_DANGER = 'danger'
 export const BUTTON_TYPE_NEUTRAL = 'neutral'
