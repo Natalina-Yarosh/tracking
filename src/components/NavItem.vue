@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { isNavItemValid } from '@/validators'
 import { currentPage, navigate } from '../router'
 import BaseIcon from './BaseIcon.vue'
-import { scrollToCurrentHour } from '../timeline-items'
+import { scrollToCurrentHour } from '../timeline-items.ts'
 import { PAGE_TIMELINE } from '../constants'
 
 const props = defineProps({

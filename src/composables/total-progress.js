@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import { getProgressColorClass } from '@/functions.js'
 import { calculateCompletionPercentage, trackedActivities } from '../activities.js'
-import { calculateTrackedActivitySeconds, timelineItems } from '@/timeline-items.js'
+import { calculateTrackedActivitySeconds, timelineItems } from '@/timeline-items.ts'
 
 export function useTotalProgress() {
 

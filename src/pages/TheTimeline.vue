@@ -1,7 +1,7 @@
 <script setup>
 import { onActivated } from 'vue'
 import TimelineItem from '../components/TimelineItem.vue'
-import { timelineItems, scrollToCurrentHour } from '@/timeline-items.js'
+import { timelineItems, scrollToCurrentHour } from '@/timeline-items.ts'
 
 import TheTimelineIndicator from '@/components/TheTimelineIndicator.vue'
 

@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { MILLISECONDS_IN_SECONDS } from '@/constants.js'
-import { activeTimelineItem, updateTimelineItem } from '@/timeline-items.js'
+import { activeTimelineItem, updateTimelineItem } from './timeline-items.ts'
 
 const timelineItemTimer = ref(false)
 
