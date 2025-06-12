@@ -9,7 +9,7 @@ import {
   resetTimelineItemTimer,
   stopTimelineItemTimer,
   startTimelineItemTimer,
-} from '@/timeline-item-timer'
+} from '../timeline-item-timer'
 import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
 import { activeTimelineItem } from '@/timeline-items.ts'
 

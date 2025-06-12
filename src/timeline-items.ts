@@ -1,17 +1,11 @@
 import { ref, computed, watch } from 'vue'
 import { HOURS_IN_DAY, MIDNIGHT_HOUR } from './constants.ts'
 import { endOfHour, isToday, today, toSeconds, now } from './time.ts'
-import { stopTimelineItemTimer } from './timeline-item-timer.js'
-import type { Activity, State } from './types.ts'
+import { stopTimelineItemTimer } from './timeline-item-timer'
+import type { Activity, State, TimelineItem } from './types.ts'
 
 export const timelineItemRefs = ref<any>([])
 
-interface TimelineItem {
-  hour: number
-  activityId: string | null
-  activitySeconds: number
-  isActive: boolean
-}
 export const timelineItems = ref<TimelineItem[]>([])
 
 export const activeTimelineItem = computed((): TimelineItem | undefined =>
@@ -100,14 +94,19 @@ function calculateIdleSeconds(lastActiveAt: Date): number {
 }
 
 function generateTimelineItems(): TimelineItem[] {
-  return [...Array(HOURS_IN_DAY).keys()].map((hour): TimelineItem => ({
-    hour,
-    activityId: null,
-    activitySeconds: 0,
-    isActive: false,
-  }))
+  return [...Array(HOURS_IN_DAY).keys()].map(
+    (hour): TimelineItem => ({
+      hour,
+      activityId: null,
+      activitySeconds: 0,
+      isActive: false,
+    }),
+  )
 }
 
-function filterTimelineItemsByActivity(timelineItems: TimelineItem[], { id }: Activity): TimelineItem[] {
-  return timelineItems.filter(({ activityId }):boolean => activityId === id)
+function filterTimelineItemsByActivity(
+  timelineItems: TimelineItem[],
+  { id }: Activity,
+): TimelineItem[] {
+  return timelineItems.filter(({ activityId }): boolean => activityId === id)
 }
