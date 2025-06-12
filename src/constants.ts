@@ -45,7 +45,7 @@ export const BUTTON_TYPES: ButtonType[] = [
   BUTTON_TYPE_WARNING,
 ]
 
-export const PERIOD_SELECT_OPTIONS: any = generatePeriodSelectOptions()
+export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()
 
 export const LOW_PERCENT = 33
 export const MEDIUM_PERCENT = 66
