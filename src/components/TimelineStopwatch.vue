@@ -1,6 +1,6 @@
 <script setup>
 import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from '@/constants'
-import { isTimeLineItemValid } from '@/validators'
+import { isTimeLineItemValid } from '../validators.ts'
 import { formatSeconds } from '@/functions'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'

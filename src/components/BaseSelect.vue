@@ -1,5 +1,5 @@
 <script setup>
-import { validateSelectOptions, isUndefinedOrNull, isSelectValueValid } from '@/validators'
+import { validateSelectOptions, isUndefinedOrNull, isSelectValueValid } from '../validators.ts'
 import { computed } from 'vue'
 import { BUTTON_TYPE_NEUTRAL } from '../constants'
 import { normalizeSelectValue } from '@/functions'

@@ -16,7 +16,7 @@ const typeClasses = {
 }
 </script>
 <script setup>
-import { isButtonTypeValid } from '@/validators'
+import { isButtonTypeValid } from '../validators.ts'
 
 const props = defineProps({
   type: {

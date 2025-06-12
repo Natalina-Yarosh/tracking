@@ -6,7 +6,7 @@ import {
   MEDIUM_PERCENT,
   HUNDRED_PERCENT,
 } from './constants'
-import { isNull } from './validators'
+import { isNull } from './validators.ts'
 
 enum ProgressColorClass {
   RED = 'bg-red-500',

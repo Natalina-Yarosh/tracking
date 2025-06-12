@@ -1,6 +1,6 @@
 <script setup>
 import { formatSeconds } from '@/functions.js'
-import { isActivityValid } from '@/validators.js'
+import { isActivityValid } from '../validators.ts'
 import { HUNDRED_PERCENT } from '@/constants.js'
 import { useProgress } from '@/composables/progress.js'
 

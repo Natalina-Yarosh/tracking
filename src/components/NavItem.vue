@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue'
-import { isNavItemValid } from '@/validators'
+import { isNavItemValid } from '../validators.ts'
 import { currentPage, navigate } from '../router'
 import BaseIcon from './BaseIcon.vue'
 import { scrollToCurrentHour } from '../timeline-items.ts'

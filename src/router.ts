@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { isPageValid } from './validators'
+import { isPageValid } from './validators.ts'
 import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants.ts'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
