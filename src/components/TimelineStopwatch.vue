@@ -1,4 +1,4 @@
-<script setup>
+<script setup >
 import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from '../constants.ts'
 import { isTimeLineItemValid } from '../validators.ts'
 import { formatSeconds } from '../functions.ts'
@@ -10,8 +10,8 @@ import {
   stopTimelineItemTimer,
   startTimelineItemTimer,
 } from '../timeline-item-timer'
-import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '@/icons'
-import { activeTimelineItem } from '@/timeline-items.ts'
+import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../icons.ts'
+import { activeTimelineItem } from '../timeline-items.ts'
 
 defineProps({
   timelineItem: {
