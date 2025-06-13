@@ -29,22 +29,11 @@ export function isActivityValid({ id, name, secondsToComplete }: any): boolean {
   return [isNotEmptyString(id), isNotEmptyString(name), isNumber(secondsToComplete)].every(Boolean)
 }
 
-export function validateSelectOptions(options: any): boolean {
-  return options.every(isSelectOptionValid)
-}
-
-export function isSelectValueValid(value: any): boolean {
-  return isNotEmptyString(value) || isNumberOrNull(value)
-}
-
 export function isUndefinedOrNull(value: any): boolean {
   return isUndefined(value) || isNull(value)
 }
 export function isNull(value: any): boolean {
   return value === null
-}
-function isNumberOrNull(value: any): boolean {
-  return isNumber(value) || isNull(value)
 }
 
 function isUndefined(value: any): boolean {
@@ -53,10 +42,6 @@ function isUndefined(value: any): boolean {
 
 function isNumber(value: any): boolean {
   return typeof value === 'number'
-}
-
-function isSelectOptionValid({ value, label }: any): boolean {
-  return (isNumber(value) || isNotEmptyString(value)) && isNotEmptyString(label)
 }
 
 function isNotEmptyString(value: any): boolean {
