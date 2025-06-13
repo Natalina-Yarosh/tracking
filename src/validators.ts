@@ -13,10 +13,6 @@ export function isNavItemValid(navItem: any): boolean {
   return NAV_ITEMS.includes(navItem)
 }
 
-export function isButtonTypeValid(type: any): boolean {
-  return BUTTON_TYPES.includes(type)
-}
-
 export function isTimeLineItemValid({ hour }: any): boolean {
   return isHourValid(hour)
 }
