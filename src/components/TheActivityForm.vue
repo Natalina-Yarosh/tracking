@@ -1,14 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import { nextTick, ref } from 'vue'
-import { id } from '@/functions'
-import { createActivity } from '@/activities'
+import { id } from '../functions'
+import { createActivity } from '../activities'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { ICON_PLUS } from '@/icons'
+import { ICON_PLUS } from '../icons'
 
 const name = ref('')
 
-async function submit() {
+async function submit(): Promise<void> {
   createActivity({
     id: id(),
     name: name.value,
@@ -29,7 +29,7 @@ async function submit() {
       v-model="name"
     />
     <BaseButton :disabled="name.trim() === ''">
-      <BaseIcon :name= ICON_PLUS  />
+      <BaseIcon :name="ICON_PLUS" />
     </BaseButton>
   </form>
 </template>

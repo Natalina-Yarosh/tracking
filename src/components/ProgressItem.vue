@@ -1,16 +1,10 @@
-<script setup>
-import { formatSeconds } from '../functions.ts'
-import { isActivityValid } from '../validators.ts'
-import { HUNDRED_PERCENT } from '../constants.ts'
-import { useProgress } from '../composables/progress.ts'
+<script setup lang="ts">
+import { formatSeconds } from '../functions'
+import { HUNDRED_PERCENT } from '../constants'
+import { useProgress } from '../composables/progress'
+import type { Activity } from '../types'
 
-const props = defineProps({
-  activity: {
-    required: true,
-    type: Object,
-    validator: isActivityValid,
-  },
-})
+const props = defineProps<{ activity: Activity }>()
 
 const { colorClass, percentage, trackedActivitySeconds } = useProgress(props.activity)
 </script>
