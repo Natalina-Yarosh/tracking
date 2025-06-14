@@ -21,8 +21,8 @@ export function formatSeconds(seconds: number): string {
   return utc.substring(utc.indexOf(':') - 2, utc.indexOf(':') + 6)
 }
 
-export function normalizeSelectValue(value: any): any {
-  return value === null || isNaN(value) ? value : +value
+export function normalizeSelectValue(value: string | null): string | number | null {
+  return value === null || isNaN(Number(value)) ? value : +value
 }
 
 export function getProgressColorClass(percentage: number): ProgressColorClass {
@@ -42,7 +42,7 @@ export function generatePeriodSelectOptions(): SelectOption<number>[] {
   return periodsInMinutes.map(
     (periodInMinutes): SelectOption<number> => ({
       value: periodInMinutes * SECONDS_IN_MINUTE,
-      label: generatePeriodSelectOptionsLabel(periodInMinutes)
+      label: generatePeriodSelectOptionsLabel(periodInMinutes),
     }),
   )
 }

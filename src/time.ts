@@ -12,7 +12,7 @@ export const secondsSinceMidnightInPercentage = computed(
   (): number => (HUNDRED_PERCENT * secondsSinceMidnight.value) / SECONDS_IN_DAY,
 )
 const secondsSinceMidnight = computed(
-  (): number => ((now.value as any) - midnight.value) / MILLISECONDS_IN_SECONDS,
+  (): number => (now.value.getTime() - midnight.value) / MILLISECONDS_IN_SECONDS,
 )
 
 const midnight = computed((): number => new Date(now.value).setHours(0, 0, 0, 0))
