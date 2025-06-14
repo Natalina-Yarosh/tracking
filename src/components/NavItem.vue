@@ -3,18 +3,17 @@ import { computed } from 'vue'
 import { currentPage, navigate } from '../router'
 import BaseIcon from './BaseIcon.vue'
 import { scrollToCurrentHour } from '../timeline-items'
-import { PAGE_TIMELINE } from '../constants'
-import type { NavItem } from '../types'
+import { type NavItem, PageName } from '../types'
 
 const props = defineProps<{ navItem: NavItem }>()
 
-const classes = computed(():string[] => [
+const classes = computed((): string[] => [
   'flex flex-col items-center p-2 text-xs capitalize',
   props.navItem.page === currentPage.value ? 'bg-gray-200' : 'hover:bg-gray-100',
 ])
 
 function handleClick(): void {
-  currentPage.value === PAGE_TIMELINE && props.navItem.page === PAGE_TIMELINE
+  currentPage.value === PageName.TIMELINE && props.navItem.page === PageName.TIMELINE
     ? scrollToCurrentHour(true)
     : navigate(props.navItem.page)
 }

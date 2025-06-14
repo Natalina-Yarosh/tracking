@@ -1,23 +1,19 @@
 import { generatePeriodSelectOptions } from './functions.ts'
-import { type NavItem, type ButtonType, IconName } from './types.ts'
+import { type NavItem, type ButtonType, IconName, PageName } from './types.ts'
 
 export const LOCAL_STORAGE_KEY = 'tyme-tracker'
 
-export const PAGE_TIMELINE = 'timeline'
-export const PAGE_ACTIVITIES = 'activities'
-export const PAGE_PROGRESS = 'progress'
-
 export const NAV_ITEMS: NavItem[] = [
   {
-    page: PAGE_TIMELINE,
+    page: PageName.TIMELINE,
     icon: IconName.CLOCK,
   },
   {
-    page: PAGE_ACTIVITIES,
+    page: PageName.ACTIVITIES,
     icon: IconName.LIST_BULLET,
   },
   {
-    page: PAGE_PROGRESS,
+    page: PageName.PROGRESS,
     icon: IconName.CHART_BAR,
   },
 ]
