@@ -7,7 +7,6 @@ import {
   HUNDRED_PERCENT,
 } from './constants'
 import { ProgressColorClass, type SelectOption } from './types.ts'
-import { isNull } from './validators.ts'
 
 export function formatSecondsWithSign(seconds: number): string {
   return `${seconds >= 0 ? '+' : '-'}${formatSeconds(seconds)}`
@@ -23,7 +22,7 @@ export function formatSeconds(seconds: number): string {
 }
 
 export function normalizeSelectValue(value: any): any {
-  return isNull(value) || isNaN(value) ? value : +value
+  return value === null || isNaN(value) ? value : +value
 }
 
 export function getProgressColorClass(percentage: number): ProgressColorClass {

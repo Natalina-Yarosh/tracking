@@ -1,6 +1,5 @@
 import { ref } from 'vue'
-import { isPageValid } from './validators.ts'
-import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS } from './constants.ts'
+import { PAGE_TIMELINE, PAGE_ACTIVITIES, PAGE_PROGRESS, NAV_ITEMS } from './constants.ts'
 import TheActivities from './pages/TheActivities.vue'
 import TheProgress from './pages/TheProgress.vue'
 import TheTimeline from './pages/TheTimeline.vue'
@@ -22,7 +21,7 @@ export function navigate(page: PageName): void {
 
 export function normalizePageHash(): PageName {
   const page = window.location.hash.slice(1)
-  if (isPageValid(page)) {
+  if (NAV_ITEMS.some((navItem): boolean => navItem.page === page)) {
     return page as PageName
   }
 
