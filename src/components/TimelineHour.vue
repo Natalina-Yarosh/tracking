@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { scrollToHour } from '../timeline-items'
 import { now } from '../time'

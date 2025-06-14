@@ -1,5 +1,5 @@
-<script setup>
-import { activities } from '../activities.ts'
+<script setup lang="ts">
+import { activities } from '../activities'
 import ActivityItem from '../components/ActivityItem.vue'
 import TheActivityForm from '../components/TheActivityForm.vue'
 import TheActivitiesEmptyState from '../components/TheActivitiesEmptyState.vue'

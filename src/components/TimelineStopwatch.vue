@@ -1,25 +1,19 @@
-<script setup >
-import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from '../constants.ts'
-import { isTimeLineItemValid } from '../validators.ts'
-import { formatSeconds } from '../functions.ts'
+<script setup lang="ts">
+import { BUTTON_TYPE_DANGER, BUTTON_TYPE_SUCCESS, BUTTON_TYPE_WARNING } from '../constants'
+import { formatSeconds } from '../functions'
 import BaseButton from './BaseButton.vue'
 import BaseIcon from './BaseIcon.vue'
-import { now } from '../time.ts'
+import { now } from '../time'
 import {
   resetTimelineItemTimer,
   stopTimelineItemTimer,
   startTimelineItemTimer,
 } from '../timeline-item-timer'
-import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../icons.ts'
-import { activeTimelineItem } from '../timeline-items.ts'
+import { ICON_ARROW_PATH, ICON_PAUSE, ICON_PLAY } from '../icons'
+import { activeTimelineItem, timelineItems } from '../timeline-items'
+import type { TimelineItem } from '../types'
 
-defineProps({
-  timelineItem: {
-    required: true,
-    type: Object,
-    validator: isTimeLineItemValid,
-  },
-})
+defineProps<{ timelineItem: TimelineItem }>()
 </script>
 <template>
   <div class="flex w-full gap-2">
