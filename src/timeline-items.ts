@@ -93,7 +93,7 @@ if(!activeTimelineItem.value) return
 function calculateIdleSeconds(lastActiveAt: Date): number {
   return lastActiveAt.getHours() === today().getHours()
     ? toSeconds(today().getTime() - lastActiveAt.getTime())
-    : toSeconds(endOfHour(lastActiveAt.getTime() - lastActiveAt.getTime()))
+    : toSeconds(endOfHour(lastActiveAt).getTime() - lastActiveAt.getTime())
 }
 
 function generateTimelineItems(): TimelineItem[] {

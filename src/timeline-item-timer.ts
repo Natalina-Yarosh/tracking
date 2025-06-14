@@ -3,7 +3,7 @@ import { MILLISECONDS_IN_SECONDS } from './constants.ts'
 import { activeTimelineItem, updateTimelineItem } from './timeline-items.ts'
 import type { TimelineItem } from './types.ts'
 
-const timelineItemTimer = ref<number | undefined>()
+const timelineItemTimer = ref<NodeJS.Timeout | undefined>()
 
 export function startTimelineItemTimer(timelineItem?: TimelineItem): void {
   timelineItem = timelineItem ?? activeTimelineItem.value
