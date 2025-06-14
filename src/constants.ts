@@ -1,5 +1,5 @@
 import { generatePeriodSelectOptions } from './functions.ts'
-import { type NavItem, type ButtonType, IconName, PageName } from './types.ts'
+import { type NavItem, ButtonType, IconName, PageName } from './types.ts'
 
 export const LOCAL_STORAGE_KEY = 'tyme-tracker'
 
@@ -26,18 +26,12 @@ export const MIDNIGHT_HOUR = 0
 export const SECONDS_IN_DAY = HOURS_IN_DAY * SECONDS_IN_HOUR
 export const MILLISECONDS_IN_SECONDS = 1000
 
-export const BUTTON_TYPE_DANGER = 'danger'
-export const BUTTON_TYPE_NEUTRAL = 'neutral'
-export const BUTTON_TYPE_PRIMARY = 'primary'
-export const BUTTON_TYPE_SUCCESS = 'success'
-export const BUTTON_TYPE_WARNING = 'warning'
-
 export const BUTTON_TYPES: ButtonType[] = [
-  BUTTON_TYPE_DANGER,
-  BUTTON_TYPE_NEUTRAL,
-  BUTTON_TYPE_PRIMARY,
-  BUTTON_TYPE_SUCCESS,
-  BUTTON_TYPE_WARNING,
+  ButtonType.DANGER,
+  ButtonType.NEUTRAL,
+  ButtonType.PRIMARY,
+  ButtonType.SUCCESS,
+  ButtonType.WARNING,
 ]
 
 export const PERIOD_SELECT_OPTIONS = generatePeriodSelectOptions()

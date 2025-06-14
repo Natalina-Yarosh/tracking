@@ -1,16 +1,17 @@
-import {
-  BUTTON_TYPE_DANGER,
-  BUTTON_TYPE_NEUTRAL,
-  BUTTON_TYPE_PRIMARY,
-  BUTTON_TYPE_SUCCESS,
-  BUTTON_TYPE_WARNING,
-} from './constants'
-
 export enum PageName {
   TIMELINE = 'timeline',
   ACTIVITIES = 'activities',
   PROGRESS = 'progress',
 }
+
+export enum ButtonType {
+  PRIMARY = 'primary',
+  NEUTRAL = 'neutral',
+  DANGER = 'danger',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+}
+
 export type Hour =
   | 0
   | 1
@@ -78,13 +79,6 @@ export interface NavItem {
   page: PageName
   icon: IconName
 }
-
-export type ButtonType =
-  | typeof BUTTON_TYPE_DANGER
-  | typeof BUTTON_TYPE_NEUTRAL
-  | typeof BUTTON_TYPE_PRIMARY
-  | typeof BUTTON_TYPE_SUCCESS
-  | typeof BUTTON_TYPE_WARNING
 
 export enum ProgressColorClass {
   RED = 'bg-red-500',
