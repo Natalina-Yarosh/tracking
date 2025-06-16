@@ -38,7 +38,7 @@ export function id(): string {
 }
 
 export function generatePeriodSelectOptions(): SelectOption<number>[] {
-  const periodsInMinutes = [15, 30, 45, 60]
+  const periodsInMinutes = [1, 5, 15, 30, 45, 60, 90, 120]
   return periodsInMinutes.map(
     (periodInMinutes): SelectOption<number> => ({
       value: periodInMinutes * SECONDS_IN_MINUTE,
